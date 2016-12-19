@@ -1,0 +1,24 @@
+<?php
+$tr_oblik="Облік аплікаторів";
+$tr_nomer="Number";
+$tr_misce="Place";
+$tr_cycle="Cycle";
+$tr_add_apl="Add Applicator";
+$tr_add_new="Greate Applicator";
+$tr_read="List of  Applicator";
+$tr_read_all="List of all changes with  Applicator";
+$tr_err_nom="Номер аплікатора пустий";
+$tr_err_nom1="Тільки великі букви та цифри";
+$tr_err_misce="Не вказано місце";
+$tr_err_misce1="Тільки великі і маленькі букви";
+$tr_err_cycle="Невказано кількість циклів";
+$tr_err_cycle1="Введено невірне значення";
+$tr_base_ok="Дані записано";
+$tr_base_nok="Error";
+$tr_nomer_apl="Applicator Number ";
+$tr_misce_apl="Applicator place";
+$tr_cycle_apl="Cycle";
+$tr_time="Data, time";
+$tr_history = "History";
+$tr_user="User";
+$tr_index="Index";

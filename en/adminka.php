@@ -29,8 +29,8 @@ function test_input($data) {
   </header>
   <body>
 <div id="language">
-<a href="en/adminka.php"><img src="en.jpg" alt="English" height="30" wieght="30">English</a>
-<a href="adminka.php"><img src="ua.jpg" alt="Ukrainian" height="30" wieght="30">Ukrainian</a>
+<a href="adminka.php"><img src="en.jpg" alt="English" height="30" wieght="30">English</a>
+<a href="../adminka.php"><img src="ua.jpg" alt="Ukrainian" height="30" wieght="30">Ukrainian</a>
 </div>
 <br>
 <?php

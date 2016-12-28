@@ -11,9 +11,9 @@ include('translate.php');
 
 </html>
 <?php
-echo "<a href='adminka.php'>".$tr_index."</a>";
+echo "<a href='index.php'>".$tr_index."</a>";
 //echo '<pre>', print_r($_POST, 1), '</pre>'; //виводить все що є вмасиві $_POST
-$sql = "SELECT `ID`, `nomer`, `misce`, `cycle`, `time` FROM `komax` WHERE 1" ;
+$sql = "SELECT `ID`, `nomer`, `misce`, `cycle`, `time` FROM `komax` WHERE 1 ORDER BY `time` DESC" ;
 $res = $mysqli->query($sql);
 echo "<table border='1' cellpadding='0' cellspacing='0' style='width: 100%; height: 10px'><tbody>
 <tr><td style='width: 5%; height: 15px'>№</td>

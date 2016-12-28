@@ -32,24 +32,11 @@ if ($mysqli->query($sql) === TRUE) {
     echo "Table created successfully" . "<br>";
 	if ($mysqli->query($sql1) === TRUE){
 		if ($mysqli->query($sql2) === TRUE){
-			$sql = "CREATE TABLE IF NOT EXISTS `komaxupd` (
-			`ID` int(11) NOT NULL,
-			`nomer` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-			`misce` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-			`cycle` int(11) NOT NULL,
-			`time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Дата',
-			PRIMARY KEY ( `id` )
-			)";
-			$sql1 = "ALTER TABLE `komaxupd` ADD UNIQUE KEY `ID` (`ID`);";
-			$sql2 = "ALTER TABLE `komaxupd` MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;";
-			$mysqli->query($sql); 
-			$mysqli->query($sql1);
-			$mysqli->query($sql2);
-			echo "Table modifice successfully"."<br>";
+			echo "Table modifice successfully"."<br>";	
 		}
 		else {
 			echo "Error creating table: " . $mysqli->error;
-		}
+			}	
 	}
 } else {
     echo "Error creating table: " . $mysqli->error;

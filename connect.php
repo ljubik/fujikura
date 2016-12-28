@@ -7,8 +7,8 @@ $db_name="fuji";//dbName
 //reinit params for my local
 if (!empty($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] == 'reg1.loc'){
 	$db_user="root";//userName
-	$db_pass="";//password
-	$db_serv="localhost";//hostName
+	$db_pass="usbw";//password
+	$db_serv="localhost:3307";//hostName
 	$db_name="komax";//dbName
 }
 

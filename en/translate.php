@@ -15,6 +15,7 @@ $tr_err_cycle="Невказано кількість циклів";
 $tr_err_cycle1="Введено невірне значення";
 $tr_base_ok="Дані записано";
 $tr_base_nok="Error";
+$tr_base_read="Дані не записано";
 $tr_nomer_apl="Applicator Number ";
 $tr_misce_apl="Applicator place";
 $tr_cycle_apl="Cycle";

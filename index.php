@@ -26,6 +26,9 @@ function test_input($data) {
       text-align: right;
   }
   </style>
+  
+  
+  
   </header>
   <body>
 <div id="language">
@@ -78,9 +81,9 @@ if (empty($nomerErr)){
 		$misce = $_POST['misce'];
 		$cycle = $_POST['cycle'];
 		$time = $today;
-		$sql = "INSERT INTO `komax` (`id`, `nomer`, `misce`, `cycle`, `time`) VALUES ('$id', '$nomer', '$misce', '$cycle', '$time')";	
-		$sql1 = "INSERT INTO `komaxupd` (`id`, `nomer`, `misce`, `cycle`, `time`) VALUES ('$id', '$nomer', '$misce', '$cycle', '$time')";
-			//	$sql = "update `komaxupd` SET `misce`='$misce', `cycle`='$cycle', `time`='$time' WHERE `nomer`='$nomer' ";	
+        $sql = "INSERT INTO `komax` (`id`, `nomer`, `misce`, `cycle`, `time`) VALUES ('$id', '$nomer', '$misce', '$cycle', '$time')";	
+		//$sql1 = "INSERT INTO `komaxupd` (`id`, `nomer`, `misce`, `cycle`, `time`) VALUES ('$id', '$nomer', '$misce', '$cycle', '$time')";
+			$sql1 = "update `komaxupd` SET `misce`='$misce', `cycle`='$cycle', `time`='$time' WHERE `nomer`='$nomer' ";	
 			if ($mysqli->query($sql) === TRUE) {
 			    $mysqli->query($sql1);
 		        echo $tr_base_ok;
@@ -95,16 +98,16 @@ if (empty($nomerErr)){
 <table border='0' cellpadding='0' cellspacing='0' style='width: 100%; height: 40px'><tbody><tr>
 <td style='width: 75%; height: 10px'><a href="index.php"><img src="images.jpg" alt="Logo Fujikura"></a><B><h2><?php echo $tr_oblik;?></h2></td>
 <td style='width: 25%; height: 10px'><B>  
-<a href='index.php'><input type="submit"  name="add_newBtn" tabindex="6" value="<?php echo $tr_add_apl;?>"></a><br><br>
+<a href='adminka.php'><input type="submit"  name="add_newBtn" tabindex="6" value="<?php echo $tr_add_new;?>"></a><br><br>
 <a href='read.php'><input type="submit"  name="readBtn" tabindex="7" value="<?php echo $tr_read;?>"></a><br><br>
 <a href='read_all.php'><input type="submit"  name="read_allBtn" tabindex="8" value="<?php echo $tr_read_all;?>"></a><br><br>
 </td></tr>
 <tr><td style='width: 75%; height: 10px'><B>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" id="form_send"> 
    <?php echo $tr_nomer;?><input type="text" id="inp_nomer" name="nomer" maxlength="5" tabindex="1"> 
    <?php echo $tr_misce;?><input type="text" id="inp_misce" name="misce" maxlength="15" tabindex="2">  
    <?php echo $tr_cycle;?><input type="text" id="inp_cykle" name="cycle" maxlength="9" tabindex="3">
-   <input type="submit"  id="inp_btn" name="subBtn" tabindex="5" value="<?php echo $tr_add_new;?>">
+   <input type="submit"  id="inp_btn" name="subBtn" tabindex="5" value="<?php echo $tr_add_apl;?>">
    <br>
    <span class="error"><?php echo $nomerErr;?></span><br>
    <span class="error"><?php echo $misceErr;?></span><br>
@@ -116,7 +119,30 @@ if (empty($nomerErr)){
  
 
 <?php 
-
+echo $tr_history;
+$sql = "SELECT `ID`, `nomer`, `misce`, `cycle`, `time` FROM `komax` WHERE 1 ORDER BY `ID` DESC limit 10" ;
+$res = $mysqli->query($sql);
+echo "<table border='1' cellpadding='10' cellspacing='1' style='width: 100%; height: 10px'><tbody>
+<tr><td style='width: 25%; height: 10px'><B>".$tr_nomer_apl."</td>
+<td style='width: 25%; height: 10px'> <B>".$tr_misce_apl."</td> 
+<td style='width: 25%; height: 10px'><B>".$tr_cycle_apl."</td>
+<td style='width: 25%; height: 10px'><B>".$tr_time."</td></tr></tbody></table>";
+while($row = mysqli_fetch_assoc($res)) 
+echo "<table border='1' cellpadding='0' cellspacing='0' style='width: 100%; height: 10px'><tbody>
+<tr><td style='width: 25%; height: 10px'>".$row['nomer']."</td>
+<td style='width: 25%; height: 10px'>".$row['misce']."</td>
+<td style='width: 25%; height: 10px'>	".$row['cycle']."</td>
+</td><td style='width: 25%; height: 10px'>	".$row['time']."</td></tbody></table>";
+if ($mysqli->query($sql) === TRUE) {
+			echo $tr_base_read;
+			echo $sql;
+			exit;
+		} 
+else {
+			//echo $tr_base_nok . $mysqli->error;
+			//echo $sql;
+			
+	}
 ?>
 </body>
 </html>

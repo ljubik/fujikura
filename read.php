@@ -10,14 +10,9 @@ include('translate.php');
 
 </html>
 <?php
-echo "<a href='adminka.php'>".$tr_index."</a>";
-echo '<pre>', print_r($_POST, 1), '</pre>'; //виводить все що є вмасиві $_POST
-//$sql = "SELECT `nomer`, `cycle`, `misce` AS `nomer` FROM `komax` WHERE nomer = (select max(nomer) from `komax`)";
-//$sql = "SELECT `ID`, `nomer`, `misce`, `cycle`, `time` FROM `komax` WHERE nomer = (select Count(distinct) from `komax`)";
-
-//$sql = "SELECT COUNT(*), `nomer`, `cycle`, `misce`, `ID` AS `Строки`, `id` FROM `komax` GROUP BY `nomer` ORDER BY `nomer` WHERE cycle = (select max(cycle) from `komax`)";
-//$sql = "SELECT COUNT(*),  `nomer`, `cycle`, `misce`, `ID` AS `Строки`, `id` FROM `komax` GROUP BY `nomer` ORDER BY last id";
-$sql = "SELECT `ID`, `nomer`, `misce`, `cycle`, `time` FROM `komax` WHERE 1" ;
+echo "<a href='index.php'>".$tr_index."</a>";
+//echo '<pre>', print_r($_POST, 1), '</pre>'; //виводить все що є вмасиві $_POST
+$sql = "SELECT `ID`, `nomer`, `misce`, `cycle`, `time` FROM `komaxupd` WHERE 1" ;
 $result = $mysqli->query($sql);
 
 

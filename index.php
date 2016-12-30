@@ -87,17 +87,23 @@ if (empty($nomerErr)){
 		$time = $today;
         $sql = "INSERT INTO `komax` (`id`, `nomer`, `misce`, `cycle`, `time`) VALUES ('$id', '$nomer', '$misce', '$cycle', '$time')";	
 		//$sql1 = "INSERT INTO `komaxupd` (`id`, `nomer`, `misce`, `cycle`, `time`) VALUES ('$id', '$nomer', '$misce', '$cycle', '$time')";
-			$sql1 = "update `komaxupd` SET `misce`='$misce', `cycle`='$cycle', `time`='$time' WHERE `nomer`='$nomer' ";	
-			if ($mysqli->query($sql1) == TRUE) {
+		$sql1 = "update `komaxupd` SET `misce`='$misce', `cycle`='$cycle', `time`='$time' WHERE `nomer`='$nomer' ";	
+		$sql_nom_check = "SELECT * FROM `komaxupd` WHERE `nomer`='$nomer'";
+		$check = $mysqli->query($sql_nom_check);
+		while($row = mysqli_fetch_assoc($check)) 
+			if ($nomer === $row['nomer']){
+			    $mysqli->query($sql1); 
 			    $mysqli->query($sql);
 		        echo $tr_base_ok;
 			    header('Location: index.php');
 			    exit;
 			}
-			else
-			echo "You not have applicator";
-			//header('Location: index.php');
-			exit;
+			else {
+			    echo "You not have applicator need ADD";
+			    echo $tr_base_nok;
+			    //header('Location: index.php');
+			    //exit;
+			}
 		}
 	}
 }
@@ -115,7 +121,7 @@ if (empty($nomerErr)){
    <?php echo $tr_nomer;?><input type="text" id="inp_nomer" name="nomer" maxlength="5" tabindex="1"> 
    <?php echo $tr_misce;?><input type="text" id="inp_misce" name="misce" maxlength="15" tabindex="2">  
    <?php echo $tr_cycle;?><input type="text" id="inp_cycle" name="cycle" maxlength="9" tabindex="3">
-   <input type="submit"  id="inp_btn" name="subBtn" tabindex="5" value="<?php echo $tr_add_apl;?>">
+   <input type="submit" onclock="sub()" id="inp_btn" name="subBtn" tabindex="5" value="<?php echo $tr_add_apl;?>">
    <br>
    <span class="error"><?php echo $nomerErr;?></span><br>
    <span class="error"><?php echo $misceErr;?></span><br>
@@ -151,14 +157,15 @@ if ($mysqli->query($sql) === TRUE) {
 			exit;
 		} 
 else {
-			//echo $tr_base_nok . $mysqli->error;
+			echo $tr_base_nok . $mysqli->error;
 			//echo $sql;
 	}
 ?>
 <script type="text/javascript">
 /* global $*/
-function myFunction() {
+function sub() {
     document.getElementById("form_send").submit();
+    alert("Work");
 }
 
 function setFocus(){
@@ -167,13 +174,13 @@ function setFocus(){
     $("#inp_nomer").keyup(function(event){
     if(event.keyCode == 13){
         document.getElementById("inp_misce").focus();
-        //event.preventDefault();
+        event.preventDefault();
         }
     });
     $("#inp_misce").keyup(function(event){
     if(event.keyCode == 13){
         document.getElementById("inp_cycle").focus();
-        //event.preventDefault();
+        event.preventDefault();
         }
     });
     $("#inp_cycle").keyup(function(event){
@@ -184,7 +191,7 @@ function setFocus(){
         //document.getElementById("inp_btn").html.;
         document.getElementById("inp_btn").focus();
         //$("#inp_btn").onclick("#submit_form");
-        //event.preventDefault();
+        event.preventDefault();
         }
     });
 }

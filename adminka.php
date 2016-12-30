@@ -108,7 +108,7 @@ if (empty($nomerErr)){
    <?php echo $tr_nomer;?><input type="text" id="inp_nomer" name="nomer" maxlength="5" tabindex="1" required> 
    <?php echo $tr_misce;?><input type="text" id="inp_misce" name="misce" maxlength="15" tabindex="2" required>  
    <?php echo $tr_cycle;?><input type="text" id="inp_cyсle" name="cycle" maxlength="9" tabindex="3" required>
-   <span class="inp_sub"><input onclick="myFunction()" type="button"  id="inp_btn" name="subBtn" tabindex="5" value="<?php echo $tr_add_new;?>"></span>
+   <span class="inp_sub"><input  type="submit"  id="inp_btn" name="subBtn" tabindex="5" value="<?php echo $tr_add_new;?>"></span>
    <br>
    <span class="error"><?php echo $nomerErr;?></span><br>
    <span class="error"><?php echo $misceErr;?></span><br>

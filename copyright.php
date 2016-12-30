@@ -8,7 +8,7 @@
 
     </header>
     <body>
-      <div id="sales"><div id="LK"><input type="button" value="Powered by Liubomyr Kokor" onclick="buy()" /><div class="date">2016-<?php echo date('Y');?></div></div>
+      <div id="sales"><div id="LK"><input type="button" value="Powered by Liubomyr Kokor" onclick="buy()" /></div><div class="date">2016-<?php echo date('Y');?></div>
       
       
 <script>

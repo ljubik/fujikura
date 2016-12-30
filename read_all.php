@@ -7,9 +7,13 @@ include('connect.php');
 include('translate.php');
 ?>
 <html>
+	<header>
 <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-</html>
+</header>
+<body>
 <?php
 echo "<a href='index.php'>".$tr_index."</a>";
 //echo '<pre>', print_r($_POST, 1), '</pre>'; //виводить все що є вмасиві $_POST
@@ -42,3 +46,6 @@ else {
 			
 		}	
 ?>
+<?php include('copyright.php');?>
+</body>
+</html>

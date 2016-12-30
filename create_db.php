@@ -51,6 +51,9 @@ if ($mysqli->query($sql) === TRUE) {
 			echo "Error creating table: " . $mysqli->error;
 		}
 	}
+	else {
+    echo "Error creating table: " . $mysqli->error;
+	}
 } else {
     echo "Error creating table: " . $mysqli->error;
 }

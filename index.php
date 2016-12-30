@@ -20,6 +20,9 @@ function test_input($data) {
 <html>
     <header>
 <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
   <style>
   .error {color: #FF0000;}
   #language {
@@ -31,6 +34,7 @@ function test_input($data) {
   
   </header>
   <body>
+<body onload="setFocus()">
 <div id="language">
 <a href="en/index.php"><img src="en.jpg" alt="English" height="30" wieght="30">English</a>
 <a href="index.php"><img src="ua.jpg" alt="Ukrainian" height="30" wieght="30">Ukrainian</a>
@@ -84,12 +88,16 @@ if (empty($nomerErr)){
         $sql = "INSERT INTO `komax` (`id`, `nomer`, `misce`, `cycle`, `time`) VALUES ('$id', '$nomer', '$misce', '$cycle', '$time')";	
 		//$sql1 = "INSERT INTO `komaxupd` (`id`, `nomer`, `misce`, `cycle`, `time`) VALUES ('$id', '$nomer', '$misce', '$cycle', '$time')";
 			$sql1 = "update `komaxupd` SET `misce`='$misce', `cycle`='$cycle', `time`='$time' WHERE `nomer`='$nomer' ";	
-			if ($mysqli->query($sql) === TRUE) {
-			    $mysqli->query($sql1);
+			if ($mysqli->query($sql1) == TRUE) {
+			    $mysqli->query($sql);
 		        echo $tr_base_ok;
 			    header('Location: index.php');
 			    exit;
 			}
+			else
+			echo "You not have applicator";
+			//header('Location: index.php');
+			exit;
 		}
 	}
 }
@@ -103,18 +111,22 @@ if (empty($nomerErr)){
 <a href='read_all.php'><input type="submit"  name="read_allBtn" tabindex="8" value="<?php echo $tr_read_all;?>"></a><br><br>
 </td></tr>
 <tr><td style='width: 75%; height: 10px'><B>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" id="form_send"> 
+<form id="form_send" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" id="form_send"> 
    <?php echo $tr_nomer;?><input type="text" id="inp_nomer" name="nomer" maxlength="5" tabindex="1"> 
    <?php echo $tr_misce;?><input type="text" id="inp_misce" name="misce" maxlength="15" tabindex="2">  
-   <?php echo $tr_cycle;?><input type="text" id="inp_cykle" name="cycle" maxlength="9" tabindex="3">
+   <?php echo $tr_cycle;?><input type="text" id="inp_cycle" name="cycle" maxlength="9" tabindex="3">
    <input type="submit"  id="inp_btn" name="subBtn" tabindex="5" value="<?php echo $tr_add_apl;?>">
    <br>
    <span class="error"><?php echo $nomerErr;?></span><br>
    <span class="error"><?php echo $misceErr;?></span><br>
    <span class="error"><?php echo $cycleErr;?></span><br>
    <br>
-</form></td>
+</form>
+
+</td>
 <td style='width: 25%; height: 10px'><B> </td></tr></tbody></table>
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
  
 
@@ -141,8 +153,45 @@ if ($mysqli->query($sql) === TRUE) {
 else {
 			//echo $tr_base_nok . $mysqli->error;
 			//echo $sql;
-			
 	}
 ?>
+<script type="text/javascript">
+/* global $*/
+function myFunction() {
+    document.getElementById("form_send").submit();
+}
+
+function setFocus(){
+{
+    document.getElementById("inp_nomer").focus();
+    $("#inp_nomer").keyup(function(event){
+    if(event.keyCode == 13){
+        document.getElementById("inp_misce").focus();
+        //event.preventDefault();
+        }
+    });
+    $("#inp_misce").keyup(function(event){
+    if(event.keyCode == 13){
+        document.getElementById("inp_cycle").focus();
+        //event.preventDefault();
+        }
+    });
+    $("#inp_cycle").keyup(function(event){
+    if(event.keyCode == 13){
+        //document.getElementById("form_send").submit();
+        //document.span.innerHTML ="<h1>Text in html</h1>";
+        //document.getElementById("form_send").submit(); return false;
+        //document.getElementById("inp_btn").html.;
+        document.getElementById("inp_btn").focus();
+        //$("#inp_btn").onclick("#submit_form");
+        //event.preventDefault();
+        }
+    });
+}
+return false;
+}
+</script>
+
+<?php //include('copyright.php');?>
 </body>
 </html>

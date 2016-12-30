@@ -2,14 +2,14 @@
 $db_user="fuji";//userName
 $db_pass="fujikura";//password
 $db_serv="db1.cityhost.com.ua";//hostName
-$db_name="fuji";//dbName
+$db_name="fuji";//dbName needet to greate on MySQL server
 
 //reinit params for my local
 if (!empty($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] == 'reg1.loc'){
 	$db_user="root";//userName
 	$db_pass="usbw";//password
 	$db_serv="localhost:3307";//hostName
-	$db_name="komax";//dbName
+	$db_name="komax";//dbName needet to greate on MySQL server
 }
 
 $mysqli= new mysqli($db_serv, $db_user, $db_pass, $db_name);
@@ -18,5 +18,4 @@ if (mysqli_connect_errno()){
 		printf("Impossible connect to database, error N ", mysqli_connect_error());
 		exit;
 	}
-
 ?>

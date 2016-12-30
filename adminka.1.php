@@ -104,11 +104,11 @@ if (empty($nomerErr)){
 <a href='read_all.php'><input type="submit"  name="read_allBtn" tabindex="8" value="<?php echo $tr_read_all;?>"></a><br><br>
 </td></tr>
 <tr><td style='width: 75%; height: 10px'><B>
-<form id="form_send" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
-   <?php echo $tr_nomer;?><input type="text" id="inp_nomer" name="nomer" maxlength="5" tabindex="1" required> 
-   <?php echo $tr_misce;?><input type="text" id="inp_misce" name="misce" maxlength="15" tabindex="2" required>  
-   <?php echo $tr_cycle;?><input type="text" id="inp_cyсle" name="cycle" maxlength="9" tabindex="3" required>
-   <span class="inp_sub"><input onclick="myFunction()" type="button"  id="inp_btn" name="subBtn" tabindex="5" value="<?php echo $tr_add_new;?>"></span>
+<form onsubmit="submit();" id="form_send" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
+   <?php echo $tr_nomer;?><input type="text" id="inp_nomer" name="nomer" maxlength="5" tabindex="1"> 
+   <?php echo $tr_misce;?><input type="text" id="inp_misce" name="misce" maxlength="15" tabindex="2">  
+   <?php echo $tr_cycle;?><input type="text" id="inp_cykle" name="cycle" maxlength="9" tabindex="3">
+   <span class="inp_sub"><input onClick="submit();" type="button"  id="inp_btn" name="subBtn" tabindex="5" value="<?php echo $tr_add_new;?>"></span>
    <br>
    <span class="error"><?php echo $nomerErr;?></span><br>
    <span class="error"><?php echo $misceErr;?></span><br>
@@ -121,34 +121,31 @@ if (empty($nomerErr)){
 
 <script type="text/javascript">
 /* global $*/
-function myFunction() {
-    document.getElementById("form_send").submit();
-}
-
 function setFocus(){
 {
     document.getElementById("inp_nomer").focus();
     $("#inp_nomer").keyup(function(event){
     if(event.keyCode == 13){
+        
         document.getElementById("inp_misce").focus();
         event.preventDefault();
         }
     });
     $("#inp_misce").keyup(function(event){
     if(event.keyCode == 13){
-        document.getElementById("inp_cycle").focus();
+        document.getElementById("inp_cykle").focus();
         event.preventDefault();
         }
     });
-    $("#inp_cycle").keyup(function(event){
+    $("#inp_cykle").keyup(function(event){
     if(event.keyCode == 13){
-        document.getElementById("form_send").submit();
-        //document.span.innerHTML ="<h1>Text in html</h1>";
+        //document.getElementById("form_send").
+        document.span.innerHTML ="<h1>Text in html</h1>";
         //document.getElementById("form_send").submit(); return false;
         //document.getElementById("inp_btn").html.;
         //document.getElementById("myForm").submit();
-        //$("#inp_btn").onclick("#submit_form");
-        event.preventDefault();
+        $("#inp_btn").onclick("#submit_form");
+        //event.preventDefault();
         }
     });
     // $("#inp_btn").keyup(function(event){
@@ -166,6 +163,6 @@ return false;
 
 
 </script>
-<?php //include('copyright.php');?>
+<?php include('copyright.php');?>
 </body>
 </html>
